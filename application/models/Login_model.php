@@ -23,4 +23,13 @@ class Login_model extends CI_Model {
 		$result = $query->result_array()[0];
 		return $result['role'];
 	}
+
+	public function signup($username, $password){
+		$data = array(
+			'username' => $username,
+			'password' => $password,
+			'role' => '3'
+ 		);
+		$this->db->insert('user_admin',$data);
+	}
 }

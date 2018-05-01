@@ -35,21 +35,6 @@
   </div>
 </div>-->
 
-<!-- Container (About Section) -->
-<div id="jurnal" class="container-fluid">
-  <div class="row">
-    <div class="col-sm-8">
-      <h2>Tentang Jurnal Aplikasi</h2><br>
-      <h4>Jurnal aplikasi ini adalah Karya anak bangsa dan bla bla blaa,</h4><br>
-      <p>Semoga Jurnal ini bermanfaan bagi kita semua ,,,, yeee</p>
-
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-signal logo"></span>
-    </div>
-  </div>
-</div>
-
 
 
 <!-- Container (Contact Section) -->
@@ -71,5 +56,9 @@ Hubungi kami Apabila ada yang perlu di tanyakan.</p>
     </div>
   </div>
 </div>
+
+
+
+
 
 <?php     $this->load->view("templates/footer_home");?>

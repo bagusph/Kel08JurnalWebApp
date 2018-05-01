@@ -202,6 +202,7 @@
       </button>
       <a class="navbar-brand" href="#myPage">Journal Web App</a>
     </div>
+
     <div class="collapse navbar-collapse" id="myNavbar">
       <?php if ($this->session->userdata('login') != null): ?>
           <?php if ($this->session->userdata('login')['level'] == '1'){ ?>
@@ -230,7 +231,12 @@
                   <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="<?php echo base_url('Login') ?>">Login</a></li>
+                    
+                    
+                    <li><a type="button" name="login" id="login" data-toggle="modal" data-target="#loginModal" class="btn btn-light">Login</a> </li>
+
+
+                    <li><a type="button" name="login" id="login" data-toggle="modal" data-target="#daftarModal" class="btn btn-light">Sign Up</a> </li>
                   </ul>
       <?php endif ?>
     </div>

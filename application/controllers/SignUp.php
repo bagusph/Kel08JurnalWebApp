@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Landing_Page extends CI_Controller {
+class SignUp extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,8 +20,11 @@ class Landing_Page extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_landing');
-		$this->load->view('Login');
-			
+		$this->load->view('signup');
+	}
+	public function proses_signup()
+	{
+		$this->load->model('Login_model');
+		$this->Login_model->signup($this->input->post('username'),$this->input->post('password'));
 	}
 }

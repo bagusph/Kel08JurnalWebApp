@@ -54,6 +54,12 @@ class Login extends CI_Controller {
 	public function logout()
 	{
 		$this->session->unset_userdata('login');
-		redirect('Login','refresh');
+		redirect('Landing_page','refresh');
+	}
+	public function proses_signup()
+	{
+		$this->load->model('Login_model');
+		$this->Login_model->signup($this->input->post('username'),$this->input->post('password'));
+		redirect('Landing_page');
 	}
 }
