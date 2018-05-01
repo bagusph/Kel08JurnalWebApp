@@ -53,3 +53,4 @@ $route['default_controller'] = 'Landing_Page';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['Logout'] = "Login/logout";
+$route['Member'] = "Login/Member_page";

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Penulis_Page extends CI_Controller {
+class Member_Page extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,6 +20,9 @@ class Penulis_Page extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('Penulis/Penulis_page');
+
+		$this->load->view('Member/Member_page');
+		
+			
 	}
 }

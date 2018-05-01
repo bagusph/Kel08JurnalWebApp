@@ -21,6 +21,7 @@ class Login extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('login');
+		$this->load->view('Member_page');
 	}
 	public function proses_login()
 	{

@@ -22,6 +22,8 @@ class Landing_Page extends CI_Controller {
 	{
 		$this->load->view('welcome_landing');
 		$this->load->view('Login');
+
+		
 			
 	}
 }
