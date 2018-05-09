@@ -101,4 +101,16 @@ class Jurnal_m extends CI_Model {
             return $return;
         }
     }
+    public function get_all_artikel($limit = FALSE, $offset = FALSE)
+    {
+        if($limit){
+            $this->db->limit($limit,$offset);
+        }
+        $query = $this->db->get('jurnal');
+        return $query->result_array();
+    }
+    public function get_total()
+    {
+        return $this->db->count_all('jurnal');
+    }
 }

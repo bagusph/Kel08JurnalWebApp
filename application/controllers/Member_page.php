@@ -24,4 +24,25 @@ class Member_Page extends CI_Controller {
 		$data['Jurnal'] = $this->Jurnal_m->getData();
 		$this->load->view('Member/Member_page',$data);		
 	}
+	public function pagination() { 
+		$this->load->model('Jurnal_m');
+		$limit_per_page=5;
+		$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$total_records= $this->Jurnal_m->get_total();
+
+		if($total_records > 0 ){
+			$data['Jurnal'] = $this->Jurnal_m->get_all_artikel($limit_per_page,$start_index);
+			$config['base_url'] = base_url().'index.php/Member_page/pagination';
+			$config['total_rows'] = $total_records;
+			$config['per_page'] = $limit_per_page;
+			$config['uri_segment'] = 3;
+
+			$this->pagination->initialize($config);
+
+			$data['links'] = $this->pagination->create_links();
+		}
+		$this->load->view('Member/Member_page',$data);
+
+	}
 }
+

@@ -44,8 +44,12 @@
 			<?php endforeach ?>
 		</tbody>
 	</table>
+	<?php var_dump($links) ?>
 	<!-- File Footer -->
-
+<?php 
+        if(isset($links)){
+          echo $links;
+        } ?>
 </main>
 <script type="text/javascript">
 	$(document).ready(function() {

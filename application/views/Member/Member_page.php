@@ -1,6 +1,6 @@
 <?php $this->load->view("templates/header_home"); ?>
 
-<div class="container">
+<div class="container" style="margin-top: 7rem;">
 	<div class="row">
 
 		<?php foreach ($Jurnal as $key => $value): ?>
@@ -15,6 +15,11 @@
 		<?php endforeach ?>
 		
 	</div>
-	
+</div>
+<div class="container">
+	<center><?php 
+        if(isset($links)){
+          echo $links;
+        } ?></center>
 </div>
 <?php $this->load->view("templates/footer_home");?>
