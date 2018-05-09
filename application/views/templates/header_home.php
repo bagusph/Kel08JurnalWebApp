@@ -207,10 +207,7 @@
       <?php if ($this->session->userdata('login') != null): ?>
           <?php if ($this->session->userdata('login')['level'] == '1'){ ?>
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="<?php echo base_url('Admin_page') ?>">Penulis</a></li>
-                    <li><a href="<?php echo base_url('Logout') ?>">Logout</a></li>
+                    <li><a href="<?php echo base_url('admin_page') ?>">Back</a></li>
                   </ul>
           <?php }else if($this->session->userdata('login')['level'] == '2'){ ?>
           <ul class="nav navbar-nav navbar-right">

@@ -35,9 +35,9 @@ class Login extends CI_Controller {
 			);
 			$this->session->set_userdata('login',$data);
 			if($data['level'] == '1')
-				redirect('Admin_page','refresh');
+				redirect('admin_page','refresh');
 			else if($data['level'] == '2')
-				redirect('Penulis_page','refresh');
+				redirect('Jurnal/tambah','refresh');
 			else if($data['level'] == '3')
 				redirect('Member_page','refresh');
 			else

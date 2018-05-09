@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Member_Page extends CI_Controller {
+class Admin_page extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,8 +20,9 @@ class Member_Page extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->model('Jurnal_m');
-		$data['Jurnal'] = $this->Jurnal_m->getData();
-		$this->load->view('Member/Member_page',$data);		
+
+		$this->load->view('Admin/admin_page');
+		
+			
 	}
 }
