@@ -8,7 +8,7 @@
 	<a href="<?php echo base_url('Penulis/tambah') ?>" class="btn btn-primary mb-3">Tambah</a>
 
 	<!-- File Header -->
-	<table class="table table-striped table-bordered" width="100%" id="example">
+	<table id="example" class="table table-striped table-bordered" style="width:100%">
 		<thead>
 			<tr>
 				<!-- Sesuaikan Column Table -->
@@ -49,7 +49,7 @@
 </main>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#example').DataTable();
-	} );
+    $('#example').DataTable();
+} );
 </script>
 <?php $this->load->view('templates/footer_home') ?>
