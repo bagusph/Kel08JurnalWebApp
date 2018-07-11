@@ -26,6 +26,7 @@ class Jurnal extends CI_Controller {
 	public function tambah()
 	{
 		$data['message'] = "";
+		$data['penulis'] = $this->db->get('penulis')->result();
 		//load library form_validation
 		$this->load->library("form_validation");
 		/* aturan form validation 
@@ -65,6 +66,7 @@ class Jurnal extends CI_Controller {
 	public function ubah($id)
 	{
 		$data['message'] = "";
+		$data['penulis'] = $this->db->get('penulis')->result();
 		//load library form_validation
 		$this->load->library("form_validation");
 		/* aturan form validation 

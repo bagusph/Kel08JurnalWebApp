@@ -37,7 +37,7 @@ class Login extends CI_Controller {
 			if($data['level'] == '1')
 				redirect('admin_page','refresh');
 			else if($data['level'] == '2')
-				redirect('Jurnal/tambah','refresh');
+				redirect('Penulis_page','refresh');
 			else if($data['level'] == '3')
 				redirect('Member_page','refresh');
 			else

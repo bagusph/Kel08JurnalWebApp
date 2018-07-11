@@ -28,7 +28,12 @@
 	<div class="form-group row">
 		<label for="nama" class="col-sm-2 col-form-label">Penulis</label>
 		<div class="col-sm-10">
-			<input type="text" name="penulis" class="form-control" id="penulis"  value="<?php echo $getData['penulis'] ?>" placeholder="penulis">
+			<select class="form-control" name="fk_penulis">
+			<?php foreach ($penulis as $key => $value): ?>
+				<option value="<?php echo $value->id ?>"><?php echo $value->nama ?></option>
+			<?php endforeach ?>
+		</select>
+		<script type="text/javascript">$('select[name="fk_penulis"]').val("<?php echo $getData['fk_penulis'] ?>")</script>
 			<?php echo form_error('penulis') ?> <!-- menampilkan error saat rule nama gagal -->
 		</div>
 	</div>

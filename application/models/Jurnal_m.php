@@ -6,12 +6,12 @@ class Jurnal_m extends CI_Model {
 	public function getData()
 	{
 		//untuk select column
-		$this->db->select('*');
+		$this->db->select('jurnal.*,penulis.nama as penulis_nama');
 		//untuk from table penulis
 		$this->db->from("jurnal");
 		//$get eksekusi fungsi select
 		//hasil eksesusi = "select * from penulis"
-
+			$this->db->join('penulis','jurnal.fk_penulis=penulis.id');
 		
 		$query = $this->db->get();
 		//untuk merubah table menjadi array

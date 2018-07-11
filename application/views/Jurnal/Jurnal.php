@@ -29,7 +29,7 @@
 					<!-- Sesuaikan Column Table -->
 					<td><?php echo $value['id'] ?></td>
 					<td><?php echo $value['judul'] ?></td>
-					<td><?php echo $value['penulis'] ?></td>
+					<td><?php echo $value['penulis_nama'] ?></td>
 					<td><?php echo $value['abstract'] ?></td>
 					<td><?php echo $value['keyword'] ?></td>
 					<td><?php echo $value['referensi'] ?></td>
@@ -44,7 +44,6 @@
 			<?php endforeach ?>
 		</tbody>
 	</table>
-	<?php var_dump($links) ?>
 	<!-- File Footer -->
 <?php 
         if(isset($links)){

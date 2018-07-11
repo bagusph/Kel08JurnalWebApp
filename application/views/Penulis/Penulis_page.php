@@ -1,63 +1,82 @@
-<?php $this->load->view("templates/header_home"); ?>
-
-<br><br><br>
-
-<!-- Begin page content -->
+<?php $this->load->view('templates/header_home') ?>
 <main role="main" class="container">
-	<section class="jumbotron text-center">
-		<div class="container">
-			<h1 class="jumbotron-heading">Tulis Jurnal</h1>
-		</div>
-	</section>
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2">
-					
-				
-					<?php echo validation_errors(); ?>
-					<?php echo (isset( $upload_error)) ? '<div class="alert alert-warning" role="alert">' .$upload_error. '</div>' : ''; ?>
-					<?php echo form_open_multipart( 'Penulis/Penulis_page', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
-					<div class="form-group">
-						<label for="title">Judul Jurnal</label>
-						<input type="text" class="form-control" name="title" value="<?php echo set_value('title') ?>" required>
-					</div>
-
-					<div class="form-group">
-						<label for="text">Konten</label>
-						<textarea class="form-control" name="text" rows="3" required><?php echo set_value('text') ?></textarea>	
-					</div>
-					
-					<div class="form-group">
-						<label for="thumbnail">File Jurnal</label>
-						<input type="file" class="form-control-file" name="thumbnail">
-					</div>
-					<button id="submitBtn" type="submit" class="btn btn-primary">Upload Jurnal</button>
-				</form>
-			</div>
-		</div>
+	<div class="jumbotron">
+		<h1>Daftar Penulis</h1>
 	</div>
-</section>
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-// (function() {
-//   'use strict';
-//   window.addEventListener('load', function() {
-//     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//     var forms = document.getElementsByClassName('needs-validation');
-//     // Loop over them and prevent submission
-//     var validation = Array.prototype.filter.call(forms, function(form) {
-//       form.addEventListener('submit', function(event) {
-//         if (form.checkValidity() === false) {
-//           event.preventDefault();
-//           event.stopPropagation();
-//         }
-//         form.classList.add('was-validated');
-//       }, false);
-//     });
-//   }, false);
-// })();
-</script>
-</main>
 
-<?php     $this->load->view("templates/footer_home");?>
+	<!-- load header -->
+	<!-- action akan dilakukan ke controller product dengan fungsi tambah -->
+	<!-- PS : 
+	name pada input harus sama dengan table didatabase
+	intinya hanya pada syntax input dan form saja lainnya dari bootstrap e
+-->
+<?php echo form_open_multipart('Penulis/tambah'); ?>
+<div class="form-group row">
+	<label for="id" class="col-sm-2 col-form-label">ID</label>
+	<div class="col-sm-10">
+		<input type="text" name="id" class="form-control" id="id" value="" placeholder="id">
+		<?php echo form_error('id') ?> <!-- menampilkan error saat rule id gagal -->
+	</div>
+</div>
+<div class="form-group row">
+	<label for="nama" class="col-sm-2 col-form-label">nama</label>
+	<div class="col-sm-10">
+		<input type="text" name="nama" class="form-control" id="nama" value="" placeholder="nama">
+		<?php echo form_error('nama') ?> <!-- menampilkan error saat rule nama gagal -->
+	</div>
+</div>
+<div class="form-group row">
+	<label for="nama" class="col-sm-2 col-form-label">Alamat</label>
+	<div class="col-sm-10">
+		<input type="text" name="alamat" class="form-control" id="alamat" value="" placeholder="alamat">
+		<?php echo form_error('alamat') ?> <!-- menampilkan error saat rule nama gagal -->
+	</div>
+</div>
+<div class="form-group row">
+	<label for="nama" class="col-sm-2 col-form-label">NoTelepon</label>
+	<div class="col-sm-10">
+		<input type="text" name="notelp" class="form-control" id="notelp" value="" placeholder="notelp">
+		<?php echo form_error('notelp') ?> <!-- menampilkan error saat rule nama gagal -->
+	</div>
+</div>
+<div class="form-group row">
+	<label for="nama" class="col-sm-2 col-form-label">Status</label>
+	<div class="col-sm-10">
+		<input type="text" name="status" class="form-control" id="status" value="" placeholder="status">
+		<?php echo form_error('status') ?> <!-- menampilkan error saat rule nama gagal -->
+	</div>
+</div>
+<div class="form-group row">
+	<label for="nama" class="col-sm-2 col-form-label">Lulusan</label>
+	<div class="col-sm-10">
+		<input type="text" name="lulusan" class="form-control" id="lulusan" value="" placeholder="lulusan">
+		<?php echo form_error('nama') ?> <!-- menampilkan error saat rule nama gagal -->
+	</div>
+</div>
+<div class="form-group row">
+	<label for="nama" class="col-sm-2 col-form-label">Gelar</label>
+	<div class="col-sm-10">
+		<input type="text" name="gelar" class="form-control" id="gelar" value="" placeholder="gelar">
+		<?php echo form_error('gelar') ?> <!-- menampilkan error saat rule nama gagal -->
+	</div>
+</div>
+<div class="form-group">
+	<label for="foto">foto</label>
+	<input type="file" name="foto">
+	<?php echo $message ?>
+</div>
+<div class="form-group row">
+	<label for="col-sm-2"></label>
+	<input type="submit" class="btn btn-primary" value="Tambah">
+</div>
+</form>
+<!-- load footer -->
+
+
+</main>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable();
+	} );
+</script>
+<?php $this->load->view('templates/footer_home') ?>

@@ -24,6 +24,12 @@ class Member_Page extends CI_Controller {
 		$data['Jurnal'] = $this->Jurnal_m->getData();
 		$this->load->view('Member/Member_page',$data);		
 	}
+	public function jurnal($id)
+	{
+		$this->load->model('Jurnal_m');
+		$data['jurnal'] = $this->Jurnal_m->getDataWhereId($id)[0];
+		$this->load->view('Member/Jurnal', $data);
+	}
 	public function pagination() { 
 		$this->load->model('Jurnal_m');
 		$limit_per_page=5;
