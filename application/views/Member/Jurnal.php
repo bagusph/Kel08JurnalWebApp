@@ -11,8 +11,11 @@
      <div class="col-6"> 
         <?php echo $jurnal['abstract'] ?>
      </div>
-     <div class="col-6">
-       <p>ISBN : <?php echo $jurnal['isbn'] ?></p>
+     <div class="col-6 text-success">
+       <p>Keyword : <?php echo $jurnal['keyword'] ?></p>
+     </div>
+     <div class="col-6 text-primary">
+       <p>Refrensi : <?php echo $jurnal['referensi'] ?></p>
      </div>
 	</div>
 </div>

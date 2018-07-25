@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Landing_Page extends CI_Controller {
+class kategori_Page extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,11 +20,6 @@ class Landing_Page extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['Jurnal'] = $this->db->limit(3)->get('jurnal')->result_array();
-		$this->load->view('welcome_landing',$data);
-		$this->load->view('Login');
-
-		
-			
+		$this->load->view('kategori/kategori_page');
 	}
 }

@@ -12,13 +12,6 @@
 	intinya hanya pada syntax input dan form saja lainnya dari bootstrap e -->
 	<?php echo form_open_multipart('Jurnal/ubah/'.$getData['id']); ?>
 	<div class="form-group row">
-		<label for="id" class="col-sm-2 col-form-label">id</label>
-		<div class="col-sm-10">
-			<input type="text" name="id" class="form-control" id="id"  value="<?php echo $getData['id'] ?>" placeholder="id">
-			<?php echo form_error('id') ?> <!-- menampilkan error saat rule id gagal -->
-		</div>
-	</div>
-	<div class="form-group row">
 		<label for="nama" class="col-sm-2 col-form-label">Judul</label>
 		<div class="col-sm-10">
 			<input type="text" name="judul" class="form-control" id="judul"  value="<?php echo $getData['judul'] ?>" placeholder="judul">
@@ -28,14 +21,13 @@
 	<div class="form-group row">
 		<label for="nama" class="col-sm-2 col-form-label">Penulis</label>
 		<div class="col-sm-10">
-			<select class="form-control" name="fk_penulis">
+			<input type="text" name="penulis" class="form-control" list="penulis-datalist" value="<?php echo $getData['penulis'] ?>">
+		<datalist id="penulis-datalist">
 			<?php foreach ($penulis as $key => $value): ?>
-				<option value="<?php echo $value->id ?>"><?php echo $value->nama ?></option>
+				<option><?php echo $value->nama ?></option>
 			<?php endforeach ?>
-		</select>
-		<script type="text/javascript">$('select[name="fk_penulis"]').val("<?php echo $getData['fk_penulis'] ?>")</script>
-			<?php echo form_error('penulis') ?> <!-- menampilkan error saat rule nama gagal -->
-		</div>
+		</datalist>
+		<?php echo form_error('penulis') ?> <!-- menampilkan error saat rule nama gagal -->
 	</div>
 	<div class="form-group row">
 		<label for="nama" class="col-sm-2 col-form-label">Abstract</label>
@@ -59,12 +51,16 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label for="nama" class="col-sm-2 col-form-label">ISBN</label>
-		<div class="col-sm-10">
-			<input type="text" name="isbn" class="form-control" id="isbn"  value="<?php echo $getData['isbn'] ?>" placeholder="isbn">
-			<?php echo form_error('isbn') ?> <!-- menampilkan error saat rule nama gagal -->
-		</div>
+	<label for="nama" class="col-sm-2 col-form-label">kategori</label>
+	<div class="col-sm-10">
+		<select name="kategori" class="form-control">
+			<?php foreach ($this->db->get('kategori')->result() as $key => $value): ?>
+				<option value="<?php echo $value->id ?>"><?php echo $value->nama ?></option>
+			<?php endforeach ?>
+		</select>
+		<script>$("select[name='kategori']").val("<?php echo $getData['kategori'] ?>")</script>
 	</div>
+</div>
 	<div class="form-group">
 		<label for="foto">foto</label>
 		<input type="file" name="foto">

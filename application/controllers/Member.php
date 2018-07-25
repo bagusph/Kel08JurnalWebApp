@@ -33,7 +33,7 @@ class Member extends CI_Controller {
 		- parameter 2 ('ID') = untuk tampilan error
 		- parameter 3 ('required') = rule nya (ada banyak rule buka di userguide)
 		*/
-		$this->form_validation->set_rules('id','ID','required');
+		$this->form_validation->set_rules('username','username','required|is_unique[user_admin.username]');
 
 		// intinya membuat warna error menjadi merah :D
 		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
@@ -46,16 +46,9 @@ class Member extends CI_Controller {
 		}
 		// jika kita sudah melalukan submit
 		else{
-			$upload = $this->Member_m->upload();
-			if($upload['result'] == "success"){ // Jika proses upload sukses
-				//memanggil fungsi insertData pada model
-				$this->Member_m->insertData($upload['file']['file_name']);
+			$this->Member_m->insertData();
 				//redirect / pergi ke halaman 'penulis'
-				redirect('Member');
-			}else{ // Jika proses upload gagal
-				$data['message'] = $upload['error'];
-				$this->load->view('Member/tambah.php',$data); 
-			}
+				redirect('member');
 		}
 	}
 
@@ -67,11 +60,7 @@ class Member extends CI_Controller {
 		$data['message'] = "";
 		//load library form_validation
 		$this->load->library("form_validation");
-		/* aturan form validation 
-		- parameter 1 ('id') = ditujukan pada input yang name="id"
-		- parameter 2 ('ID') = untuk tampilan error
-		- parameter 3 ('required') = rule nya (ada banyak rule buka di userguide)
-		*/
+		
 		$this->form_validation->set_rules('username','Username','required');
 
 		// intinya membuat warna error menjadi merah :D

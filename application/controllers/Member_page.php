@@ -18,10 +18,14 @@ class Member_Page extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($kategori = null)
 	{
 		$this->load->model('Jurnal_m');
 		$data['Jurnal'] = $this->Jurnal_m->getData();
+		if($kategori != null){
+			$id_kategori = $this->db->where('nama',$kategori)->get('kategori')->row(0)->id;
+			$data['Jurnal'] = $this->db->where('kategori',$id_kategori)->get('jurnal')->result_array();
+		} 
 		$this->load->view('Member/Member_page',$data);		
 	}
 	public function jurnal($id)

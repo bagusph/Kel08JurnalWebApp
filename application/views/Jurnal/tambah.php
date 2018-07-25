@@ -1,6 +1,6 @@
 <?php $this->load->view('templates/header_home') ?>
 <main role="main" class="container">
-	<div class="jumbotron">
+	<div class="jumbotron" style="padding: 30px 20px;">
 		<h1>Tambah Jurnal</h1>
 	</div>
 
@@ -12,13 +12,6 @@
 -->
 <?php echo form_open_multipart('Jurnal/tambah'); ?>
 <div class="form-group row">
-	<label for="id" class="col-sm-2 col-form-label">ID</label>
-	<div class="col-sm-10">
-		<input type="text" name="id" class="form-control" id="id" value="" placeholder="id">
-		<?php echo form_error('id') ?> <!-- menampilkan error saat rule id gagal -->
-	</div>
-</div>
-<div class="form-group row">
 	<label for="nama" class="col-sm-2 col-form-label">Judul</label>
 	<div class="col-sm-10">
 		<input type="text" name="judul" class="form-control" id="judul" value="" placeholder="judul">
@@ -28,11 +21,12 @@
 <div class="form-group row">
 	<label for="nama" class="col-sm-2 col-form-label">Penulis</label>
 	<div class="col-sm-10">
-		<select class="form-control" name="fk_penulis">
+		<input type="text" name="penulis" class="form-control" list="penulis-datalist">
+		<datalist id="penulis-datalist">
 			<?php foreach ($penulis as $key => $value): ?>
-				<option value="<?php echo $value->id ?>"><?php echo $value->nama ?></option>
+				<option><?php echo $value->nama ?></option>
 			<?php endforeach ?>
-		</select>
+		</datalist>
 		<?php echo form_error('penulis') ?> <!-- menampilkan error saat rule nama gagal -->
 	</div>
 </div>
@@ -58,10 +52,13 @@
 	</div>
 </div>
 <div class="form-group row">
-	<label for="nama" class="col-sm-2 col-form-label">ISBN</label>
+	<label for="nama" class="col-sm-2 col-form-label">kategori</label>
 	<div class="col-sm-10">
-		<input type="text" name="isbn" class="form-control" id="isbn" value="" placeholder="isbn">
-		<?php echo form_error('isbn') ?> <!-- menampilkan error saat rule nama gagal -->
+		<select name="kategori" class="form-control">
+			<?php foreach ($this->db->get('kategori')->result() as $key => $value): ?>
+				<option value="<?php echo $value->id ?>"><?php echo $value->nama ?></option>
+			<?php endforeach ?>
+		</select>
 	</div>
 </div>
 <div class="form-group">
@@ -72,6 +69,11 @@
 <div class="form-group row">
 	<label for="col-sm-2"></label>
 	<input type="submit" class="btn btn-primary" value="Tambah">
+</div>
+<div>
+	<div class="form-group row" style="width: 50px 50px;">
+	<label for="col-sm-6"></label>
+	<a href="<?php echo base_url('index.php/Penulis_page') ?>" class="btn btn-sm btn-success">Back</a>
 </div>
 </form>
 <!-- load footer -->

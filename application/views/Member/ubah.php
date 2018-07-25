@@ -26,6 +26,16 @@
 		</div>
 	</div>
 	<div class="form-group row">
+	<label for="role" class="col-sm-2 col-form-label">Role</label>
+	<div class="col-sm-10">
+		<select name="fk_id_role" class="form-control">
+			<?php foreach ($this->db->get('role')->result() as $key => $value): ?>
+				<option value="<?php echo $value->id_role ?>"><?php echo $value->nama_role ?></option>
+			<?php endforeach ?>
+		</select>
+	</div>
+</div>
+	<div class="form-group row">
 		<label for="col-sm-2"></label>
 		<input type="submit" class="btn btn-success" value="Ubah">
 	</div>

@@ -11,6 +11,29 @@
 </div>
 
 <!-- Container (About Section) -->
+<div id="jurnal" class="container-fluid">
+  <div class="row">
+    <?php foreach ($Jurnal as $key => $value): ?>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail" style="background-color: #dcdee2;">
+      <img src="<?php echo base_url() ?>/uploads/fotopenulis/<?php echo $value['foto'] ?>" alt="..." style="max-height: 200px;min-height: 200px;">
+      <div class="caption">
+        <h3 class="text-center"><?php echo $value['judul'] ?></h3>
+        <p class="text-justify"><?php echo substr($value['abstract'], 0,200) ?></p>
+        <div class="row">
+          <div class="col-md-6">
+          <p class="text-primary"><?php echo $this->db->where("id",$value['kategori'])->get('kategori')->row(0)->nama; ?></p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-right"><a href="<?php echo base_url('Member_page/jurnal/'.$value['id']) ?>" class="btn btn-primary" role="button">Lihat </a></p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+<?php endforeach ?>
+  </div>
+</div>
 <div id="about" class="container-fluid">
   <div class="row">
     <div class="col-sm-8">

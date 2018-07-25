@@ -1,11 +1,10 @@
 <?php $this->load->view('templates/header_home') ?>
 <main role="main" class="container">
-	<div class="jumbotron">
+	<div class="jumbotron" style="padding: 20px 30px;">
 		<h1>List Member</h1>
-		<p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
 	</div>
-	<h1>List Member</h1>
 
+<a href="<?php echo base_url('Member/tambah') ?>" class="btn btn-primary mb-3">Tambah</a>
 	<!-- File Header -->
 	<table class="table table-striped table-bordered" width="100%" id="example">
 		<thead>
@@ -23,7 +22,7 @@
 					<!-- Sesuaikan Column Table -->
 					<td><?php echo $value['username'] ?></td>
 					<td><?php echo $value['password'] ?></td>
-					<td><?php echo $value['role'] ?></td>
+					<td><?php echo $value['fk_id_role'] ?></td>
 					<td>
 						<!-- --AKSI-- -->
 						<a href="<?php echo base_url('Member/ubah/'.$value['username']) ?>" class="btn btn-sm btn-success">Ubah</a>

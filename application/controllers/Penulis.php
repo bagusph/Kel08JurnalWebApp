@@ -33,7 +33,12 @@ class Penulis extends CI_Controller {
 		- parameter 2 ('ID') = untuk tampilan error
 		- parameter 3 ('required') = rule nya (ada banyak rule buka di userguide)
 		*/
-		$this->form_validation->set_rules('id','ID','required');
+		$this->form_validation->set_rules('nama','nama','required');
+		$this->form_validation->set_rules('alamat','alamat','required');
+		$this->form_validation->set_rules('notelp','notelp','required');
+		$this->form_validation->set_rules('status','status','required');
+		$this->form_validation->set_rules('lulusan','lulusan','required');
+		$this->form_validation->set_rules('gelar','gelar','required');
 
 		// intinya membuat warna error menjadi merah :D
 		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');

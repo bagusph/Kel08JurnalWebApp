@@ -12,14 +12,7 @@
 -->
 <?php echo form_open_multipart('Penulis/tambah'); ?>
 <div class="form-group row">
-	<label for="id" class="col-sm-2 col-form-label">ID</label>
-	<div class="col-sm-10">
-		<input type="text" name="id" class="form-control" id="id" value="" placeholder="id">
-		<?php echo form_error('id') ?> <!-- menampilkan error saat rule id gagal -->
-	</div>
-</div>
-<div class="form-group row">
-	<label for="nama" class="col-sm-2 col-form-label">nama</label>
+	<label for="nama" class="col-sm-2 col-form-label">Nama</label>
 	<div class="col-sm-10">
 		<input type="text" name="nama" class="form-control" id="nama" value="" placeholder="nama">
 		<?php echo form_error('nama') ?> <!-- menampilkan error saat rule nama gagal -->

@@ -18,10 +18,14 @@ class Login_model extends CI_Model {
 
 	public function getRole($username)
 	{
+		$this->db->select('fk_id_role');
 		$this->db->where('username',$username);
 		$query = $this->db->get('user_admin');
-		$result = $query->result_array()[0];
-		return $result['role'];
+		if($query->num_rows() == 1){
+			return $query->row(0)->fk_id_role;
+		}else{
+			return false;
+		}
 	}
 
 	public function signup($username, $password){

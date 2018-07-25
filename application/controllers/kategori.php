@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jurnal extends CI_Controller {
+class kategori extends CI_Controller {
 
 	//konstruktor (statement yang selalu dipanggil pada setiap function)
 	function __construct() {
 		parent::__construct();
-		//load model Jurnal_m
-		$this->load->model('Jurnal_m');
+		//load model Penulis_m
+		$this->load->model('kategori_m');
 		//load helper form
 		$this->load->helper('form');	
 	}
@@ -17,16 +17,15 @@ class Jurnal extends CI_Controller {
 	public function index()
 	{
 		/* mengisi $data['getData'] berupa data yang 
-		terlah direturn pada fungsi getData() pada Jurnal_m */
-		$data['getData'] = $this->Jurnal_m->getData();
+		terlah direturn pada fungsi getData() pada Penulis_m */
+		$data['getData'] = $this->kategori_m->getData();
 		// memanggil view 'penulis/penulis.php' dan diberi variable $data
-		$this->load->view('Jurnal/Jurnal.php',$data);
+		$this->load->view('kategori/kategori.php',$data);
 	}
 
 	public function tambah()
 	{
 		$data['message'] = "";
-		$data['penulis'] = $this->db->get('penulis')->result();
 		//load library form_validation
 		$this->load->library("form_validation");
 		/* aturan form validation 
@@ -34,10 +33,7 @@ class Jurnal extends CI_Controller {
 		- parameter 2 ('ID') = untuk tampilan error
 		- parameter 3 ('required') = rule nya (ada banyak rule buka di userguide)
 		*/
-		$this->form_validation->set_rules('judul','judul','required');
-		$this->form_validation->set_rules('abstract','abstract','required');
-		$this->form_validation->set_rules('keyword','keyword','required');
-		$this->form_validation->set_rules('referensi','referensi','required');
+		$this->form_validation->set_rules('nama','nama','required|is_unique[kategori.nama]');
 
 		// intinya membuat warna error menjadi merah :D
 		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
@@ -46,20 +42,13 @@ class Jurnal extends CI_Controller {
 		// if jika kita belum melakukan submit
 		if($this->form_validation->run()==FALSE){
 			//menampilkan view 'penulis/tambah.php'
-			$this->load->view('Jurnal/tambah.php',$data); 
+			$this->load->view('kategori/tambah.php',$data); 
 		}
 		// jika kita sudah melalukan submit
 		else{
-			$upload = $this->Jurnal_m->upload();
-			if($upload['result'] == "success"){ // Jika proses upload sukses
-				//memanggil fungsi insertData pada model
-				$this->Jurnal_m->insertData($upload['file']['file_name']);
-				//redirect / pergi ke halaman 'penulis'
-				redirect('Jurnal');
-			}else{ // Jika proses upload gagal
-				$data['message'] = $upload['error'];
-				$this->load->view('Jurnal/tambah.php',$data); 
-			}
+			$this->kategori_m->insertData();
+			//redirect / pergi ke halaman 'penulis'
+			redirect('kategori');
 		}
 	}
 
@@ -69,7 +58,6 @@ class Jurnal extends CI_Controller {
 	public function ubah($id)
 	{
 		$data['message'] = "";
-		$data['penulis'] = $this->db->get('penulis')->result();
 		//load library form_validation
 		$this->load->library("form_validation");
 		/* aturan form validation 
@@ -77,7 +65,7 @@ class Jurnal extends CI_Controller {
 		- parameter 2 ('ID') = untuk tampilan error
 		- parameter 3 ('required') = rule nya (ada banyak rule buka di userguide)
 		*/
-		$this->form_validation->set_rules('penulis','penulis','required');
+		$this->form_validation->set_rules('nama','nama','required|is_unique[kategori.nama]');
 
 		// intinya membuat warna error menjadi merah :D
 		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
@@ -85,31 +73,31 @@ class Jurnal extends CI_Controller {
 		
 
 		//memberikan data berisi data yang sesuai dengan $id
-		$data['getData'] = $this->Jurnal_m->getDataWhereId($id)[0];
+		$data['getData'] = $this->kategori_m->getDataWhereId($id)[0];
 
 		// if jika kita belum melakukan submit
 		if($this->form_validation->run()==FALSE){
 			//menampilkan view 'penulis/ubah.php'
-			$this->load->view('Jurnal/ubah',$data);
+			$this->load->view('kategori/ubah',$data);
 		}
 		// jika kita sudah melalukan submit
 		else{
-			if ($_FILES['file']['name'] == "")
+			if ($_FILES['foto']['name'] == "")
 			{
 				//memanggil fungsi insertData pada model
-				$this->Jurnal_m->updateData($id);
+				$this->kategori_m->updateData($id);
 			//redirect / pergi ke halaman 'penulis'
-				redirect('Jurnal');
+				redirect('kategori');
 			}
 			else
 			{
-				$upload = $this->Jurnal_m->upload();
+				$upload = $this->kategori_m->upload();
 				if($upload['result'] == "success"){ 
-					$this->Jurnal_m->updateData($id,$upload['file']['file_name']);
-					redirect('Jurnal');
+					$this->kategori_m->updateData($id);
+					redirect('kategori');
 				}else{ 
 					$data['error_upload'] = $upload['error'];
-					$this->load->view('Jurnal/ubah',$data);
+					$this->load->view('kategori/ubah',$data);
 				}
 			}
 		}
@@ -121,7 +109,7 @@ class Jurnal extends CI_Controller {
 	public function hapus($id)
 	{
 		//memanggil fungsi hapusData pada model
-		$this->Jurnal_m->hapusData($id);
-		redirect('Jurnal');
+		$this->kategori_m->hapusData($id);
+		redirect('kategori');
 	}
 }

@@ -220,7 +220,10 @@
                     <li><a href="<?php echo base_url('index.php/Penulis') ?>">Penulis</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="<?php echo base_url('index.php/member') ?>">Member</a></li>
+                    <li><a href="<?php echo base_url('index.php/member') ?>">User</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="<?php echo base_url('index.php/kategori') ?>">Kategori</a></li>
                   </ul>
           <?php }else if($this->session->userdata('login')['level'] == '2'){ ?>
           <ul class="nav navbar-nav navbar-right">
@@ -229,8 +232,6 @@
                   </ul>
           <?php }else if($this->session->userdata('login')['level'] == '3'){ ?>
           <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
                     <li><a href="<?php echo base_url('Member_page') ?>">Member</a></li>
                     <li><a href="<?php echo base_url('Logout') ?>">Logout</a></li>
                   </ul>

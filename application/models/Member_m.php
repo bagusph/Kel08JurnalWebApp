@@ -27,7 +27,7 @@ class Member_m extends CI_Model {
 		return $this->db->get()->result_array();
 	}
 
-	public function insertData($upload_name)
+	public function insertData()
 	{
 		/* get post data dari form input menurut "name" nya
 		contoh <input name="..."> */
@@ -35,16 +35,9 @@ class Member_m extends CI_Model {
 			/* 'id' yang dikiri harus sama seperti di table
 			'id' yang dikanan harus menurut name inputnya */
 			'username' => $this->input->post('username'),
-			'name' => $this->input->post('name'),
-			'price' => $this->input->post('price'),
-			'brand' => $this->input->post('brand')
-		);
-		/* jika semua sama sperti di table
-		gunakan versi simple seprti berikut */
-		$data = $this->input->post();
-		$data['foto'] = $upload_name;
-		/* eksekusi query insert into "penulis" diisi dengan variable $data
-		face2face ae lek bingung :| */
+			'password' => $this->input->post('password'),
+			'fk_id_role' => $this->input->post('fk_id_role'),
+		);	
 		$this->db->insert("user_admin",$data);
 	}
 
