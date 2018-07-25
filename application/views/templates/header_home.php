@@ -143,6 +143,12 @@
       border-color: transparent;
       color: #fff !important;
   }
+  .navbar-nav>li>.dropdown-menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: orangered;
+  }
   footer .glyphicon {
       font-size: 20px;
       margin-bottom: 20px;
@@ -225,11 +231,51 @@
                   <ul class="nav navbar-nav navbar-right">
                     <li><a href="<?php echo base_url('index.php/kategori') ?>">Kategori</a></li>
                   </ul>
+
+
+
           <?php }else if($this->session->userdata('login')['level'] == '2'){ ?>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right">                    
+                    <li class="dropdown-toggle"></li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Daftar Jurnal</a>
+
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="<?php echo base_url('Jurnal/myjurnal') ?>">My Jurnal</a>
+                    
+                        <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="<?php echo base_url('Jurnal') ?>">All Jurnal</a>
+                        </div>
+                      </li>
+
+
+
+
                     <li><a href="<?php echo base_url('Jurnal/tambah') ?>">Tambah Jurnal</a></li>
-                    <li><a href="<?php echo base_url('Logout') ?>">Logout</a></li>
-                  </ul>
+                    
+
+                    <!-- <li><a href="<?php echo base_url('Logout') ?>">Logout</a></li> -->
+                    
+                    <?php   $a = $this->session->userdata('login');?>
+                    <!-- <li><a><?php echo $a['username']; ?></a></li> -->
+                    <li class="dropdown-toggle"></li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi. <?php echo $a['username']; ?></a>
+
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Profil</a>
+                    
+                        <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="<?php echo base_url('Logout') ?>">LogOut</a>
+                        </div>
+                      </li>
+
+                  
+
+            </ul>
+
+
+
           <?php }else if($this->session->userdata('login')['level'] == '3'){ ?>
           <ul class="nav navbar-nav navbar-right">
                     <li><a href="<?php echo base_url('Member_page') ?>">Member</a></li>

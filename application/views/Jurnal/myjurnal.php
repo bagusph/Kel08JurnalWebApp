@@ -1,5 +1,6 @@
 <?php $this->load->view('templates/header_home') ?>
 <main role="main" class="container">
+	<br><br><br>
 	<div class="jumbotron" style="padding: 20px 30px;">
 		<h1>List Jurnal</h1>
 	</div>
@@ -36,20 +37,8 @@
 					<td><?php echo $value['foto'] ?></td>
 					<td>
 						<!-- --AKSI-- -->
-						<?php if($this->session->userdata('login')['level'] == '2'){ 
-							$a = $this->session->userdata('login');
-								if($a['username']==$value['penulis']){	?>
-									<div class="row">
-									<a href="<?php echo base_url('Jurnal/ubah/'.$value['id']) ?>" class="btn btn-sm btn-success">Ubah</a>
-									<a href="<?php echo base_url('Jurnal/hapus/'.$value['id']) ?>" class="btn btn-sm btn-danger">Hapus</a>
-									</div>
-
-						<?php }}else if ($this->session->userdata('login')['level'] == '1') { ?>
-							
-							<a href="<?php echo base_url('Jurnal/ubah/'.$value['id']) ?>" class="btn btn-sm btn-success">Ubah</a>
-							<a href="<?php echo base_url('Jurnal/hapus/'.$value['id']) ?>" class="btn btn-sm btn-danger">Hapus</a>
-	
-						<?php } ?>
+						<a href="<?php echo base_url('Jurnal/ubah/'.$value['id']) ?>" class="btn btn-sm btn-success">Ubah</a>
+						<a href="<?php echo base_url('Jurnal/hapus/'.$value['id']) ?>" class="btn btn-sm btn-danger">Hapus</a>
 					</td>
 				</tr>
 			<?php endforeach ?>

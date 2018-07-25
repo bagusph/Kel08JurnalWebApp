@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
               <label for="pwd"><span class="glyphicon"></span> Password</label>
-              <input type="text" name="password" class="form-control" id="pwd" placeholder="Enter Password">
+              <input type="password" name="password" class="form-control" id="pwd" placeholder="Enter Password">
             </div>
               <button type="submit" class="btn btn-block">Daftar 
                 <span class="glyphicon glyphicon-ok"></span>
@@ -47,7 +47,7 @@
             </div>
             <div class="form-group">
               <label for="pwd"><span class="glyphicon"></span> Password</label>
-              <input type="text" name="password" class="form-control" id="pwd" placeholder="Enter Password">
+              <input type="password" name="password" class="form-control" id="pwd" placeholder="Enter Password">
             </div>
               <button type="submit" value="Login" class="btn btn-block">Login 
                 <span class="glyphicon glyphicon-ok"></span>

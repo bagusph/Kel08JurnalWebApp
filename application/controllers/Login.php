@@ -33,6 +33,7 @@ class Login extends CI_Controller {
 				'username' => $username,
 				"level" => $this->Login_model->getRole($username)
 			);
+
 			$this->session->set_userdata('login',$data);
 			if($data['level'] == '1')
 				redirect('admin_page','refresh');
@@ -50,7 +51,18 @@ class Login extends CI_Controller {
 	public function coba()
 	{
 		$this->load->model('Login_model');
-		var_dump($this->Login_model->getRole('admin'));
+		//var_dump($this->Login_model->getRole('admin'));
+
+		var_dump($this->session->userdata('login'));
+
+		// $a = $this->session->userdata('login');
+		// echo $a['username'];
+
+	
+
+//		$this->session->userdata('login');
+
+		
 	}
 	public function logout()
 	{

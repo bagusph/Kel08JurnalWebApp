@@ -23,10 +23,20 @@ class Jurnal extends CI_Controller {
 		$this->load->view('Jurnal/Jurnal.php',$data);
 	}
 
+	public function myjurnal()
+	{
+		/* mengisi $data['getData'] berupa data yang 
+		terlah direturn pada fungsi getData() pada Jurnal_m */
+		$data['getData'] = $this->Jurnal_m->getDataPenulis();
+
+		// memanggil view 'penulis/penulis.php' dan diberi variable $data
+		$this->load->view('Jurnal/myjurnal.php',$data);
+	}
+
 	public function tambah()
 	{
 		$data['message'] = "";
-		$data['penulis'] = $this->db->get('penulis')->result();
+	 	$data['penulis'] = $this->db->get('penulis')->result();
 		//load library form_validation
 		$this->load->library("form_validation");
 		/* aturan form validation 
@@ -36,7 +46,7 @@ class Jurnal extends CI_Controller {
 		*/
 		$this->form_validation->set_rules('judul','judul','required');
 		$this->form_validation->set_rules('abstract','abstract','required');
-		$this->form_validation->set_rules('keyword','keyword','required');
+		$this->form_validation->set_rules('Keyword','yword','required');
 		$this->form_validation->set_rules('referensi','referensi','required');
 
 		// intinya membuat warna error menjadi merah :D
@@ -55,7 +65,7 @@ class Jurnal extends CI_Controller {
 				//memanggil fungsi insertData pada model
 				$this->Jurnal_m->insertData($upload['file']['file_name']);
 				//redirect / pergi ke halaman 'penulis'
-				redirect('Jurnal');
+				redirect('Jurnal/myjurnal');
 			}else{ // Jika proses upload gagal
 				$data['message'] = $upload['error'];
 				$this->load->view('Jurnal/tambah.php',$data); 

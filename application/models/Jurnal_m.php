@@ -18,6 +18,22 @@ class Jurnal_m extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getDataPenulis(){
+		//untuk select column
+		$this->db->select('jurnal.*,kategori.nama as kategori_nama');
+		//untuk from table penulis
+		$this->db->from("jurnal");
+		//$get eksekusi fungsi select
+		//hasil eksesusi = "select * from penulis"
+			$this->db->join('kategori','jurnal.kategori=kategori.id');
+		 $a = $this->session->userdata('login');
+
+		$this->db->where('penulis',$a['username']);
+		$query = $this->db->get();
+		//untuk merubah table menjadi array
+		return $query->result_array();
+	}
+
 
 	public function getDataWhereId($id)
 	{

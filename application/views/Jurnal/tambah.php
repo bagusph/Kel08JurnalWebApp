@@ -1,5 +1,6 @@
 <?php $this->load->view('templates/header_home') ?>
 <main role="main" class="container">
+	<br><br><br>
 	<div class="jumbotron" style="padding: 30px 20px;">
 		<h1>Tambah Jurnal</h1>
 	</div>
@@ -11,6 +12,10 @@
 	intinya hanya pada syntax input dan form saja lainnya dari bootstrap e
 -->
 <?php echo form_open_multipart('Jurnal/tambah'); ?>
+<?php   $a = $this->session->userdata('login');?>
+
+<?php echo validation_errors(); ?>
+
 <div class="form-group row">
 	<label for="nama" class="col-sm-2 col-form-label">Judul</label>
 	<div class="col-sm-10">
@@ -21,12 +26,7 @@
 <div class="form-group row">
 	<label for="nama" class="col-sm-2 col-form-label">Penulis</label>
 	<div class="col-sm-10">
-		<input type="text" name="penulis" class="form-control" list="penulis-datalist">
-		<datalist id="penulis-datalist">
-			<?php foreach ($penulis as $key => $value): ?>
-				<option><?php echo $value->nama ?></option>
-			<?php endforeach ?>
-		</datalist>
+		<input type="text" name="penulis" class="form-control" list="penulis-datalist" value="<?php echo $a['username']; ?>" readonly>
 		<?php echo form_error('penulis') ?> <!-- menampilkan error saat rule nama gagal -->
 	</div>
 </div>
